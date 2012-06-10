@@ -2,7 +2,7 @@
 
 pkgname=bitcasa
 pkgver=0.9.2.50
-pkgrel=2
+pkgrel=3
 pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
 url="http://www.bitcasa.com"
@@ -31,11 +31,7 @@ source=(
 	"http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
 	"http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
 	"http://mirrors.rit.edu/ubuntu/pool/universe/l/log4cxx/liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb"
-	"http://mirrors.rit.edu/ubuntu/pool/main/q/qt4-x11/libqtcore4_4.8.1-0ubuntu4_amd64.deb"
-	"http://mirrors.rit.edu/ubuntu/pool/main/q/qt4-x11/libqt4-network_4.8.1-0ubuntu4_amd64.deb"
-	"http://mirrors.rit.edu/ubuntu/pool/main/q/qt4-x11/libqtgui4_4.8.1-0ubuntu4_amd64.deb"
 	"http://mirrors.rit.edu/ubuntu/pool/main/i/icu/libicu48_4.8.1.1-3_amd64.deb"
-	"http://mirrors.rit.edu/ubuntu/pool/main/n/nas/libaudio2_1.9.3-4_amd64.deb"
 	"http://mirrors.rit.edu/ubuntu/pool/main/f/fuse/libfuse2_2.8.6-2ubuntu2_amd64.deb"
 	"LICENSE"
 	"bitcasa.sh")
@@ -60,11 +56,7 @@ sha256sums=(
 	'e75f750aea802bdff3127daaff6935e33307a0dfde8054917458a8026d65ec84' # libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
 	'b12db11e01e2593aa93adbe7f3832510fc4be9b7746212639541ebb44412d7b0' # libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
 	'ce1af021f0d5a34864b47897f5feab7d18b8023fcb76cb3e760a009c57fc2a19' # liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
-	'afb3d6a573be627ab4bd8c7a8e51275ad9eb39737eb4938757fe7d97a270c686' # libqtcore4_4.8.1-0ubuntu4_amd64.deb
-	'5cffa8ed01b695f806c875a847e8973205c366d2cbed3acb67c2effcfd004dbe' # libqt4-network_4.8.1-0ubuntu4_amd64.deb
-	'9679152cb06fefe122cd6a22abcef121568fbe673885d0b8fa7c8d2c4962d3ed' # libqtgui4_4.8.1-0ubuntu4_amd64.deb
 	'a2cbfbc062d20f9494e0d862f942dfe412525cc06f5031950c18c11b437e4173' # libicu48_4.8.1.1-3_amd64.deb
-	'40e65d71b050cfa26ef1288d400ecb087c2f45f4b26dfae8a9c8a31ded88be51' # libaudio2_1.9.3-4_amd64.deb
 	'9e1083a08e8f66fac100cf8a8aa3679c43793dcd26ddd9213d4650eebaa6d88e' # libfuse2_2.8.6-2ubuntu2_amd64.deb
 	'0d42620570e40e4d3ee95bd83776bcf484c235bfaa81892006ac863b9e5b7847' # LICENSE
 	'634ee5a5618256f61a9c1316ccb8270cfd201161ea2a91a55fb3523939d6a695' # bitcasa.sh
@@ -73,10 +65,6 @@ sha256sums=(
 _extract_deb() {
 	msg2 "Extracting deb $1"
 	ar -p $1 data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-}
-_extract_deb_lzma() {
-	msg2 "Extracting deb $1"
-	ar -p $1 data.tar.lzma | tar --lzma -xf - -C "${srcdir}" || return 1
 }
 
 build() {
@@ -105,11 +93,7 @@ build() {
 	_extract_deb libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
 	_extract_deb libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
 	_extract_deb liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
-	_extract_deb_lzma libqtcore4_4.8.1-0ubuntu4_amd64.deb
-	_extract_deb_lzma libqt4-network_4.8.1-0ubuntu4_amd64.deb
-	_extract_deb_lzma libqtgui4_4.8.1-0ubuntu4_amd64.deb
 	_extract_deb libicu48_4.8.1.1-3_amd64.deb
-	_extract_deb libaudio2_1.9.3-4_amd64.deb
 	_extract_deb libfuse2_2.8.6-2ubuntu2_amd64.deb
 	msg2 "Done extracting!" 
 }
