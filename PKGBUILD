@@ -8,8 +8,9 @@ pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
 url="http://www.bitcasa.com"
 license=('custom')
-depends=('boost-libs' 'protobuf')
+depends=('boost-libs' 'protobuf' 'fuse')
 makedepends=('binutils' 'tar')
+install=bitcasa.install
 source=(
     "http://dist.bitcasa.com/release/ubuntu/pool/main/b/bitcasa/bitcasa_${pkgver}_amd64.deb"
     "http://mirrors.rit.edu/ubuntu/pool/main/c/curl/libcurl3_7.22.0-3ubuntu4_amd64.deb"
@@ -49,19 +50,11 @@ sha256sums=(
 )
 
 build() {
-	install -d "$pkgdir/opt/bitcasa"
 	cd $srcdir/
 	ar -p bitcasa_${pkgver}_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-    cp "$srcdir/usr/bin/Bitcasa" "$pkgdir/opt/bitcasa/"
-    cp "$srcdir/bitcasa" "$pkgdir/opt/bitcasa/bitcasa"
-    chmod 755 "$pkgdir/opt/bitcasa/Bitcasa"
-	chmod 755 "$pkgdir/opt/bitcasa/bitcasa"
-    install -d "$pkgdir/usr/bin"
-    
-	ln -s "/opt/bitcasa/bitcasa" "$pkgdir/usr/bin/bitcasa"
-	ln -s "/opt/bitcasa/bitcasa" "$pkgdir/usr/bin/Bitcasa"
 	
 	# extract libs from ubuntu package
+	msg "Extracting..." 
 	ar -p libcurl3_7.22.0-3ubuntu4_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
 	ar -p libssl1.0.0_1.0.1-4ubuntu5.2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
 	ar -p libgnutls26_2.12.14-5ubuntu3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
@@ -77,13 +70,29 @@ build() {
 	ar -p libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
 	ar -p libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
 	ar -p liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
+	msg2 "Done extracting!" 
+}
+
+package() {
+	mkdir -p "$pkgdir/opt/bitcasa"
 	
-    # copy libs to the lib folder
-    cp -R "$srcdir/usr/lib/x86_64-linux-gnu" "$pkgdir/opt/bitcasa/lib"
-    cp "$srcdir/usr/lib/liblog4cxx.so.10" "$pkgdir/opt/bitcasa/lib/"
-    cp "$srcdir/usr/lib/liblog4cxx.so.10.0.0" "$pkgdir/opt/bitcasa/lib/"
-    cp "$srcdir/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
-    cp "$srcdir/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
+	msg "Moving files" 
+	mv "$srcdir/usr/bin/Bitcasa" "$pkgdir/opt/bitcasa/"
+    mv "$srcdir/bitcasa" "$pkgdir/opt/bitcasa/bitcasa"
+    chmod 755 "$pkgdir/opt/bitcasa/Bitcasa"
+	chmod 755 "$pkgdir/opt/bitcasa/bitcasa"
+    mkdir -p "$pkgdir/usr/bin"
+    
+	ln -s "/opt/bitcasa/bitcasa" "$pkgdir/usr/bin/bitcasa"
+	ln -s "/opt/bitcasa/bitcasa" "$pkgdir/usr/bin/Bitcasa"
+	
+	# move libs to the lib folder
+    mv "$srcdir/usr/lib/x86_64-linux-gnu" "$pkgdir/opt/bitcasa/lib"
+    mv "$srcdir/usr/lib/liblog4cxx.so.10" "$pkgdir/opt/bitcasa/lib/"
+    mv "$srcdir/usr/lib/liblog4cxx.so.10.0.0" "$pkgdir/opt/bitcasa/lib/"
+    mv "$srcdir/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
+    mv "$srcdir/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
+    msg2 "Done moving files"
 
 	# link libs needed
 	ln -s /usr/lib/libboost_regex.so $pkgdir/opt/bitcasa/lib/libboost_regex.so.1.46.1
@@ -91,3 +100,5 @@ build() {
 	ln -s /usr/lib/libboost_thread.so $pkgdir/opt/bitcasa/lib/libboost_thread.so.1.46.1
 	ln -s /usr/lib/libboost_system.so $pkgdir/opt/bitcasa/lib/libboost_system.so.1.46.1
 }
+
+
