@@ -37,7 +37,7 @@ source=(
 	"http://mirrors.rit.edu/ubuntu/pool/main/i/icu/libicu48_4.8.1.1-3_amd64.deb"
 	"http://mirrors.rit.edu/ubuntu/pool/main/n/nas/libaudio2_1.9.3-4_amd64.deb"
 	"http://mirrors.rit.edu/ubuntu/pool/main/f/fuse/libfuse2_2.8.6-2ubuntu2_amd64.deb"
-	"bitcasa")
+	"bitcasa.sh")
 sha256sums=(
 	'693ae882c1658d47ab0aafd328b1f4f6c68a52639ea78fcc9e4734505dd5f922' # bitcasa_0.9.2.50_amd64.deb
 	'4eecc887ee9a3ce511acd830c21a9e92babaae35d44cb6d8bfc8a7eb073ae8ef' # libboost-filesystem1.46.1_1.46.1-7ubuntu3_amd64.deb
@@ -65,7 +65,7 @@ sha256sums=(
 	'a2cbfbc062d20f9494e0d862f942dfe412525cc06f5031950c18c11b437e4173' # libicu48_4.8.1.1-3_amd64.deb
 	'40e65d71b050cfa26ef1288d400ecb087c2f45f4b26dfae8a9c8a31ded88be51' # libaudio2_1.9.3-4_amd64.deb
 	'9e1083a08e8f66fac100cf8a8aa3679c43793dcd26ddd9213d4650eebaa6d88e' # libfuse2_2.8.6-2ubuntu2_amd64.deb
-	'634ee5a5618256f61a9c1316ccb8270cfd201161ea2a91a55fb3523939d6a695' # bitcasa
+	'634ee5a5618256f61a9c1316ccb8270cfd201161ea2a91a55fb3523939d6a695' # bitcasa.sh
 )
 
 _extract_deb() {
@@ -117,7 +117,7 @@ package() {
 	
 	msg "Moving files" 
 	install -Dm755 "$srcdir/usr/bin/Bitcasa" "$pkgdir/opt/bitcasa/"
-	install -Dm755 "$srcdir/bitcasa" "$pkgdir/opt/bitcasa/bitcasa"
+	install -Dm755 "$srcdir/bitcasa.sh" "$pkgdir/opt/bitcasa/bitcasa"
 	
 	# Install Share files
 	install -Dm644 "$srcdir/usr/share/icons/hicolor/72x72/apps/bitcasa.png" "$pkgdir/usr/share/icons/hicolor/72x72/apps/bitcasa.png"
