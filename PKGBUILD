@@ -69,37 +69,47 @@ sha256sums=(
 	'634ee5a5618256f61a9c1316ccb8270cfd201161ea2a91a55fb3523939d6a695' # bitcasa
 )
 
+_extract_deb() {
+	msg2 "Extracting deb $1"
+	ar -p $1 data.tar.gz | tar zxf - -C "${srcdir}" || return 1
+}
+_extract_deb_lzma() {
+	msg2 "Extracting deb $1"
+	ar -p $1 data.tar.lzma | tar --lzma -xf - -C "${srcdir}" || return 1
+}
+
 build() {
 	cd $srcdir/
-	ar -p bitcasa_${pkgver}_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
+	msg "Extracting..."
+	_extract_deb bitcasa_${pkgver}_amd64.deb
 	
 	# extract libs from ubuntu package
-	msg "Extracting..." 
-	ar -p libboost-filesystem1.46.1_1.46.1-7ubuntu3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libboost-regex1.46.1_1.46.1-7ubuntu3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libcurl3_7.22.0-3ubuntu4_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libssl1.0.0_1.0.1-4ubuntu5.2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libgnutls26_2.12.14-5ubuntu3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libheimntlm0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libasn1-8-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libhcrypto4-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libroken18-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libsasl2-2_2.1.25.dfsg1-3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libkrb5-26-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libwind0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libqtcore4_4.8.1-0ubuntu4_amd64.deb data.tar.lzma | tar --lzma -xf - -C "${srcdir}" || return 1
-	ar -p libqt4-network_4.8.1-0ubuntu4_amd64.deb data.tar.lzma | tar --lzma -xf - -C "${srcdir}" || return 1
-	ar -p libqtgui4_4.8.1-0ubuntu4_amd64.deb data.tar.lzma | tar --lzma -xf - -C "${srcdir}" || return 1
-	ar -p libicu48_4.8.1.1-3_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libaudio2_1.9.3-4_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-	ar -p libfuse2_2.8.6-2ubuntu2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
+	_extract_deb libboost-filesystem1.46.1_1.46.1-7ubuntu3_amd64.deb
+	_extract_deb libboost-filesystem1.46.1_1.46.1-7ubuntu3_amd64.deb
+	_extract_deb libboost-regex1.46.1_1.46.1-7ubuntu3_amd64.deb
+	_extract_deb libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb
+	_extract_deb libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb
+	_extract_deb libcurl3_7.22.0-3ubuntu4_amd64.deb
+	_extract_deb libssl1.0.0_1.0.1-4ubuntu5.2_amd64.deb
+	_extract_deb libgnutls26_2.12.14-5ubuntu3_amd64.deb
+	_extract_deb libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
+	_extract_deb libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libheimntlm0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libasn1-8-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libhcrypto4-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libroken18-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libsasl2-2_2.1.25.dfsg1-3_amd64.deb data.tar.gz
+	_extract_deb libkrb5-26-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libwind0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
+	_extract_deb liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
+	_extract_deb_lzma libqtcore4_4.8.1-0ubuntu4_amd64.deb
+	_extract_deb_lzma libqt4-network_4.8.1-0ubuntu4_amd64.deb
+	_extract_deb_lzma libqtgui4_4.8.1-0ubuntu4_amd64.deb
+	_extract_deb libicu48_4.8.1.1-3_amd64.deb
+	_extract_deb libaudio2_1.9.3-4_amd64.deb
+	_extract_deb libfuse2_2.8.6-2ubuntu2_amd64.deb
 	msg2 "Done extracting!" 
 }
 
