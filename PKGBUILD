@@ -88,5 +88,4 @@ build() {
 	ln -s /usr/lib/libboost_filesystem.so $pkgdir/opt/bitcasa/lib/libboost_filesystem.so.1.46.1
 	ln -s /usr/lib/libboost_thread.so $pkgdir/opt/bitcasa/lib/libboost_thread.so.1.46.1
 	ln -s /usr/lib/libboost_system.so $pkgdir/opt/bitcasa/lib/libboost_system.so.1.46.1
-	ln -s /usr/lib/liblog4cpp.so $pkgdir/opt/bitcasa/lib/liblog4cxx.so.10
 }
