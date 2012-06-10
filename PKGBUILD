@@ -3,12 +3,11 @@
 pkgname=bitcasa
 pkgver=0.9.2.50
 pkgrel=2
-pkgdebrel=1
 pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
 url="http://www.bitcasa.com"
 license=('custom')
-depends=('protobuf' 'fuse')
+depends=('apr-util' 'fuse' 'krb5' 'libidn' 'libjpeg-turbo' 'libpng12' 'libtasn1' 'protobuf' 'p11-kit' 'qt' 'rtmpdump')
 makedepends=('binutils' 'tar')
 install=bitcasa.install
 source=(
@@ -142,7 +141,7 @@ package() {
 	ln -s "/opt/bitcasa/bitcasa" "$pkgdir/usr/bin/Bitcasa"
 	
 	# Install libs to the lib folder
-	mv "$srcdir/usr/lib/x86_64-linux-gnu" "$pkgdir/opt/bitcasa/lib"
+	mv "$srcdir/usr/lib/$CARCH-linux-gnu" "$pkgdir/opt/bitcasa/lib"
 	install -m644 "$srcdir/usr/lib/libboost_filesystem.so.1.46.1" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/usr/lib/libboost_regex.so.1.46.1" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/usr/lib/libboost_thread.so.1.46.1" "$pkgdir/opt/bitcasa/lib/"
@@ -165,8 +164,8 @@ package() {
 	install -m644 "$srcdir/usr/lib/libicutu.so.48.1.1" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/usr/lib/libicuuc.so.48" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/usr/lib/libicuuc.so.48.1.1" "$pkgdir/opt/bitcasa/lib/"
-	install -m644 "$srcdir/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
-	install -m644 "$srcdir/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
+	install -m644 "$srcdir/lib/$CARCH-linux-gnu/libcrypto.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
+	install -m644 "$srcdir/lib/$CARCH-linux-gnu/libssl.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/lib/libfuse.so.2" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/lib/libfuse.so.2.8.6" "$pkgdir/opt/bitcasa/lib/"
 	install -m644 "$srcdir/lib/libulockmgr.so.1" "$pkgdir/opt/bitcasa/lib/"
