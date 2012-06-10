@@ -8,7 +8,7 @@ pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
 url="http://www.bitcasa.com"
 license=('custom')
-depends=('boost-libs' 'protobuf' 'log4cpp')
+depends=('boost-libs' 'protobuf')
 makedepends=('binutils' 'tar')
 source=(
     "http://dist.bitcasa.com/release/ubuntu/pool/main/b/bitcasa/bitcasa_${pkgver}_amd64.deb"
@@ -77,9 +77,11 @@ build() {
 	ar -p libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
 	ar -p libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
 	ar -p liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb data.tar.gz | tar zxf - -C "${srcdir}" || return 1
-    
+	
     # copy libs to the lib folder
     cp -R "$srcdir/usr/lib/x86_64-linux-gnu" "$pkgdir/opt/bitcasa/lib"
+    cp "$srcdir/usr/lib/liblog4cxx.so.10" "$pkgdir/opt/bitcasa/lib/"
+    cp "$srcdir/usr/lib/liblog4cxx.so.10.0.0" "$pkgdir/opt/bitcasa/lib/"
     cp "$srcdir/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
     cp "$srcdir/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
 
