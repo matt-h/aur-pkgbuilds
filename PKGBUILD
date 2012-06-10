@@ -2,7 +2,7 @@
 
 pkgname=bitcasa
 pkgver=0.9.2.50
-pkgrel=1
+pkgrel=2
 pkgdebrel=1
 pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
