@@ -1,8 +1,9 @@
 # $Id$
-# Maintainer: Sagar Chalise <chalisesagar@gmail.com>
+# Maintainer: Matt Harrison <matt@mistbyte.com>
+# Contributor: Sagar Chalise <chalisesagar@gmail.com>
 pkgname=geany-zencoding
-pkgver=0.21
-pkgrel=2
+pkgver=0.22
+pkgrel=1
 pkgdesc="Zen Coding plugin for geany"
 arch=('x86_64' 'i686')
 url="https://github.com/codebrainz/geany-zencoding"
