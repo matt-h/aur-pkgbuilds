@@ -9,19 +9,19 @@ url="https://github.com/codebrainz/geany-zencoding"
 license=('GPL2')
 depends=('geany' 'python2')
 makedepends=('intltool')
-source=("https://github.com/codebrainz/geany-zencoding/tarball/master" "geany-zencoding.patch")
-md5sums=('3995d99fb8fe7af35febc09821c3f0df'
+source=("https://github.com/codebrainz/geany-zencoding/tarball/51334a0259d48a972290dba4c471e1c1aa234931" "geany-zencoding.patch")
+md5sums=('72a0bb7d67aa459cda625c5407bbcca3'
          '010252ba0d88a4d1ab820942c1b23f44')
 
 build() {
-  cd "$srcdir/codebrainz-geany-zencoding-8d456b6/"
+  cd "$srcdir/codebrainz-geany-zencoding-51334a0/"
   patch -p1 -i ../geany-zencoding.patch
   ./autogen.sh
   ./configure --prefix=`pkg-config --variable=prefix geany`
-  make 
+  make
 }
 
 package() {
-  cd "$srcdir/codebrainz-geany-zencoding-8d456b6/"
+  cd "$srcdir/codebrainz-geany-zencoding-51334a0/"
   make DESTDIR="$pkgdir" install
 }
