@@ -16,7 +16,7 @@ sha256sums=('bc2513582309bc7c787947ce1163ff5616855354ab1c1bf4f0b96da711ea72b8'
 
 build() {
 	cd "$srcdir/codebrainz-geany-zencoding-51334a0/"
-	patch -p1 -i ../geany-zencoding.patch
+	patch -p1 -i $srcdir/geany-zencoding.patch
 	./autogen.sh
 	./configure --prefix=`pkg-config --variable=prefix geany`
 	make
