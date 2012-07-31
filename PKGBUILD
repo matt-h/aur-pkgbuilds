@@ -17,7 +17,7 @@ source=(
   "http://mirrors.rit.edu/ubuntu/pool/universe/b/boost1.46/libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/universe/b/boost1.46/libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/c/curl/libcurl3_7.22.0-3ubuntu4_amd64.deb"
-  "http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.1-4ubuntu5.2_amd64.deb"
+  "http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.1-4ubuntu5.3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/g/gnutls26/libgnutls26_2.12.14-5ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/o/openldap/libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
@@ -42,7 +42,7 @@ sha256sums=(
   '6fc8bfd0ae266ecaa0c64abbff12286f86ff194e3f69be2cf17425e213d7e2b1' # libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb
   '684e5010e378b98da0eeba04f1848575a4c14aac158a4047b9ae386e9fc5b7a1' # libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb
   '46d58ee60211b8467f6e237d194e0919dc9ea7a49bc15e963b212899a4e5d990' # libcurl3_7.22.0-3ubuntu4_amd64.deb
-  'e3c5c6d669d3ae02bea0cfeb60b24435eed12189dbdabac17c980144cf36a803' # libssl1.0.0_1.0.1-4ubuntu5.2_amd64.deb
+  'e701f34277aabe21e42f657aaaf3f8c18ebf6d32f01181c9a97b41fa747e1fc3' # libssl1.0.0_1.0.1-4ubuntu5.3_amd64.deb
   'eb7b0fcaae1dc1931761546f01c52badb982c38c22a3d0e2303b50251d2aace1' # libgnutls26_2.12.14-5ubuntu3_amd64.deb
   '024df6e175efc8747454a4ca873598c16bc02eab6b811d418e78a5038b39dc09' # libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
   'cfa2e6119d5148a0c09e1b0407b32b121ee0dcbf73ac39e9522a6efce19b4197' # libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
@@ -79,7 +79,7 @@ build() {
   _extract_deb libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb
   _extract_deb libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb
   _extract_deb libcurl3_7.22.0-3ubuntu4_amd64.deb
-  _extract_deb libssl1.0.0_1.0.1-4ubuntu5.2_amd64.deb
+  _extract_deb libssl1.0.0_1.0.1-4ubuntu5.3_amd64.deb
   _extract_deb libgnutls26_2.12.14-5ubuntu3_amd64.deb
   _extract_deb libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
   _extract_deb libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
