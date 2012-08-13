@@ -7,7 +7,7 @@ pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
 url="http://www.bitcasa.com"
 license=('custom')
-depends=('apr-util' 'fuse' 'desktop-file-utils' 'hicolor-icon-theme' 'krb5' 'libidn' 'curl' 'libgcrypt' 'libtasn1' 'protobuf' 'p11-kit' 'qt' 'rtmpdump')
+depends=('apr-util' 'fuse' 'desktop-file-utils' 'hicolor-icon-theme' 'krb5' 'libidn' 'curl' 'libgcrypt' 'libtasn1' 'protobuf' 'p11-kit' 'qt' 'rtmpdump' 'heimdal-aur')
 makedepends=('binutils' 'tar')
 install=bitcasa.install
 source=(
@@ -20,16 +20,7 @@ source=(
   "http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.1-4ubuntu5.3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/g/gnutls26/libgnutls26_2.12.14-5ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/o/openldap/libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libheimntlm0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libasn1-8-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libhcrypto4-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libroken18-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.25.dfsg1-3_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libkrb5-26-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libwind0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
-  "http://mirrors.rit.edu/ubuntu/pool/main/h/heimdal/libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/universe/l/log4cxx/liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/i/icu/libicu48_4.8.1.1-3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/f/fuse/libfuse2_2.8.6-2ubuntu2_amd64.deb"
@@ -45,16 +36,7 @@ sha256sums=(
   'e701f34277aabe21e42f657aaaf3f8c18ebf6d32f01181c9a97b41fa747e1fc3' # libssl1.0.0_1.0.1-4ubuntu5.3_amd64.deb
   'eb7b0fcaae1dc1931761546f01c52badb982c38c22a3d0e2303b50251d2aace1' # libgnutls26_2.12.14-5ubuntu3_amd64.deb
   '024df6e175efc8747454a4ca873598c16bc02eab6b811d418e78a5038b39dc09' # libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
-  'cfa2e6119d5148a0c09e1b0407b32b121ee0dcbf73ac39e9522a6efce19b4197' # libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  '9c37b58b280f781cd3494626cab569672e10777cd4200c1bbd814ebe3ac84269' # libheimntlm0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  '480ef08a0e86c73f60d89dd3fc1c601712cafe65663428ac3850c5a43de928aa' # libasn1-8-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  '8bda824f525937657e24246ac91bb6374c2924ba816b94c9bb040e73a8172c60' # libhcrypto4-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  'eb6b9525307eafd759949e891179eda529ae75d1e0c248cc06d6aad937224a6d' # libroken18-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
   '7ee06d0eb0075b3ca01a162c844984675084bc861a03ce84b0803949ef8c799c' # libsasl2-2_2.1.25.dfsg1-3_amd64.deb
-  '3c3dc5a53b8d3556c8d925aab9ff101e6c149e3794efb55faddb26a62a55f1bd' # libkrb5-26-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  '6dd9066a234bc4d99df6f1c2b625fc8d86b8e85e8571cd376f521040fef76c8e' # libwind0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  'e75f750aea802bdff3127daaff6935e33307a0dfde8054917458a8026d65ec84' # libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  'b12db11e01e2593aa93adbe7f3832510fc4be9b7746212639541ebb44412d7b0' # libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
   'ce1af021f0d5a34864b47897f5feab7d18b8023fcb76cb3e760a009c57fc2a19' # liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
   'a2cbfbc062d20f9494e0d862f942dfe412525cc06f5031950c18c11b437e4173' # libicu48_4.8.1.1-3_amd64.deb
   '9e1083a08e8f66fac100cf8a8aa3679c43793dcd26ddd9213d4650eebaa6d88e' # libfuse2_2.8.6-2ubuntu2_amd64.deb
@@ -82,16 +64,7 @@ build() {
   _extract_deb libssl1.0.0_1.0.1-4ubuntu5.3_amd64.deb
   _extract_deb libgnutls26_2.12.14-5ubuntu3_amd64.deb
   _extract_deb libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
-  _extract_deb libgssapi3-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libheimntlm0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libasn1-8-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libhcrypto4-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libroken18-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
   _extract_deb libsasl2-2_2.1.25.dfsg1-3_amd64.deb data.tar.gz
-  _extract_deb libkrb5-26-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libwind0-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libheimbase1-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
-  _extract_deb libhx509-5-heimdal_1.6~git20120311.dfsg.1-2_amd64.deb
   _extract_deb liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
   _extract_deb libicu48_4.8.1.1-3_amd64.deb
   _extract_deb libfuse2_2.8.6-2ubuntu2_amd64.deb
