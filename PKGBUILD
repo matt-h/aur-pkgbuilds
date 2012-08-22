@@ -1,4 +1,5 @@
 # Maintainer: Matt Harrison <matt@mistbyte.com>
+# This PKGBUILD is managed at https://github.com/matt-h/bitcasa-pkgbuild
 
 pkgname=bitcasa
 pkgver=0.9.6.99
