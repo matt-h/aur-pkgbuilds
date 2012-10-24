@@ -1,5 +1,6 @@
 # Maintainer: Matt Harrison < matt at mistbyte dot com >
 # Contributor: Muhammad Qadri <Muhammad dot A dot Qadri at gmail dot com>
+# This PKGBUILD is managed at https://github.com/matt-h/julius-pkgbuild
 
 pkgname=julius
 pkgver=4.2.2
