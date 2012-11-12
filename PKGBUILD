@@ -1,4 +1,5 @@
 # Maintainer: Matt Harrison <matt@mistbyte.com>
+# This PKGBUILD is maintained at https://github.com/matt-h/mediaelch-pkgbuild
 
 pkgname=mediaelch
 pkgver=1.2
