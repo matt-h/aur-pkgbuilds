@@ -53,7 +53,7 @@ build() {
 	--with-openldap=/usr \
 	--libexecdir=/opt/heimdal/sbin \
 	--enable-kcm \
-    --disable-heimdal-documentation
+	--disable-heimdal-documentation
   make
 }
 
