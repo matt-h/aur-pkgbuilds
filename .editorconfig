@@ -1,0 +1,17 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# Unix-style newlines with a newline ending every file
+[*]
+# Unix-style newlines
+end_of_line = lf
+# tab indentation
+indent_style = space
+indent_size = 2
+# Whitespace rules
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[{aurpublish,*.hook,setup.sh}]
+indent_style = space
+indent_size = 4
+charset = utf-8
