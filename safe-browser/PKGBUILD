@@ -1,54 +1,39 @@
 # Maintainer: Bartłomiej Kamiński <bartlomiej.kaminski@maidsafe.net>
 pkgname=safe-browser
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="A browser designed to open safe:// websites on the SAFE Network."
 arch=('i686' 'x86_64')
 url="https://github.com/maidsafe/safe_browser"
 license=('custom:BeakerLicense')
 groups=('maidsafe')
 depends=('gtk2' 'gconf' 'alsa-lib' 'libxtst' 'libxss')
-makedepends=('nvm' 'yarn' 'unzip')
+makedepends=('nodejs-lts-carbon' 'yarn' 'unzip')
 optdepends=()
 install=
 changelog=
-source=('https://github.com/maidsafe/safe_browser/archive/alpha-2.tar.gz'
-        'safe-browser.crust.config')
-md5sums=('ae9b06d2548a9ec30429b95195e993cf'
-         '2556e44d1434ce8613db578d878306dc')
+source=("https://github.com/maidsafe/safe_browser/archive/$pkgver.tar.gz")
+sha256sums=('7c3f4bf17c4d9bf7fa8334fbea250141d3a52964d08c99d0efccf55152703d9d')
+if [ "$CARCH" = "i686" ]; then
+  _source_arch="x86"
+else
+  _source_arch="x64"
+fi
 
 build() {
-  # use nvm
-  . /usr/share/nvm/nvm.sh
-
-  # prepare nvm dir
-  mkdir -p $HOME/.nvm-tmp
-  export NVM_DIR=$HOME/.nvm-tmp
-  nvm install 6.5.0
-
-  # load dependencies for safe-browser
-  cd "safe_browser-alpha-2"
+  cd "$srcdir/safe_browser-$pkgver"
   yarn
   yarn run build
   yarn run package
-
-  nvm unload
-  rm -rf $HOME/.nvm-tmp
-
-  cd dist
-  unzip -d safe-browser safe-browser-0.6.0.zip
 }
 
 package() {
-  cd "safe_browser-alpha-2"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp "BEAKER_LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cd "dist"
+  cp "$srcdir/safe_browser-$pkgver/BEAKER_LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/opt/maidsafe"
   mkdir -p "$pkgdir/usr/bin"
-  mv safe-browser "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
+  mv "$srcdir/safe_browser-$pkgver/dist/safe-browser-v$pkgver-linux-$_source_arch" "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
   mkdir -p "$pkgdir/opt/maidsafe/$pkgname-$pkgver/resources/app/node_modules/locales"
   ln -s "/opt/maidsafe/$pkgname-$pkgver/safe-browser" "$pkgdir/usr/bin/safe-browser"
-  cd "$srcdir"
-  cp safe-browser.crust.config "$pkgdir/opt/maidsafe/$pkgname-$pkgver/"
+  cp "$srcdir/safe_browser-$pkgver/build/SAFE Browser.crust.config" "$pkgdir/opt/maidsafe/$pkgname-$pkgver/safe-browser.crust.config"
 }
