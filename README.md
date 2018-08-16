@@ -3,7 +3,7 @@ aur-pkgbuilds
 
 A collection of the PKGBUILDs I maintain for the [Arch Linux AUR](https://aur.archlinux.org)
 
-Tools to manage this are copied from https://github.com/eli-schwartz/pkgbuilds
+Powered by [aurpublish](https://github.com/eli-schwartz/aurpublish)
 
 ## How it works
 Commit PKGBUILDs in named subdirectories. Export them to the AUR with the included `aurpublish` script, using the subtree push stratagem.
@@ -26,6 +26,4 @@ This preserves an independent history for third-party hosting, pull requests... 
 > View the git log of a package subtree.
 
 ## Copyright
-All PKGBUILD files in this repository are licensed under the Unlicense
-
-The helper scripts (aurpublish, *.sh, *.hook) used are licensed under the GPLv2 or (at your option) any later version by [eli-schwartz](https://github.com/eli-schwartz/pkgbuilds)
+All PKGBUILD files in this repository are licensed under the Unlicense.
