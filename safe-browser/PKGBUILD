@@ -1,19 +1,16 @@
 # Maintainer: Bartłomiej Kamiński <bartlomiej.kaminski@maidsafe.net>
 pkgname=safe-browser
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A browser designed to open safe:// websites on the SAFE Network."
 arch=('i686' 'x86_64')
 url="https://github.com/maidsafe/safe_browser"
-license=('custom:BeakerLicense')
+license=('MIT')
 groups=('maidsafe')
 depends=('gtk2' 'gconf' 'alsa-lib' 'libxtst' 'libxss')
 makedepends=('nodejs-lts-carbon' 'yarn' 'unzip')
-optdepends=()
-install=
-changelog=
-source=("https://github.com/maidsafe/safe_browser/archive/$pkgver.tar.gz")
-sha256sums=('7c3f4bf17c4d9bf7fa8334fbea250141d3a52964d08c99d0efccf55152703d9d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maidsafe/safe_browser/archive/$pkgver.tar.gz")
+sha256sums=('2bffa2472bf3bc4f672a02972de0788cf1e966e99c863080ebcce1776f8ef345')
 if [ "$CARCH" = "i686" ]; then
   _source_arch="x86"
 else
@@ -23,17 +20,15 @@ fi
 build() {
   cd "$srcdir/safe_browser-$pkgver"
   yarn
-  yarn run build
   yarn run package
 }
 
 package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp "$srcdir/safe_browser-$pkgver/BEAKER_LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp "$srcdir/safe_browser-$pkgver/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/opt/maidsafe"
   mkdir -p "$pkgdir/usr/bin"
-  mv "$srcdir/safe_browser-$pkgver/dist/safe-browser-v$pkgver-linux-$_source_arch" "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
+  mv "$srcdir/safe_browser-$pkgver/release/safe-browser-v$pkgver-linux-$_source_arch" "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
   mkdir -p "$pkgdir/opt/maidsafe/$pkgname-$pkgver/resources/app/node_modules/locales"
   ln -s "/opt/maidsafe/$pkgname-$pkgver/safe-browser" "$pkgdir/usr/bin/safe-browser"
-  cp "$srcdir/safe_browser-$pkgver/build/SAFE Browser.crust.config" "$pkgdir/opt/maidsafe/$pkgname-$pkgver/safe-browser.crust.config"
 }

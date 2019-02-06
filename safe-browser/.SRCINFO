@@ -1,12 +1,12 @@
 pkgbase = safe-browser
 	pkgdesc = A browser designed to open safe:// websites on the SAFE Network.
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/maidsafe/safe_browser
 	arch = i686
 	arch = x86_64
 	groups = maidsafe
-	license = custom:BeakerLicense
+	license = MIT
 	makedepends = nodejs-lts-carbon
 	makedepends = yarn
 	makedepends = unzip
@@ -15,8 +15,8 @@ pkgbase = safe-browser
 	depends = alsa-lib
 	depends = libxtst
 	depends = libxss
-	source = https://github.com/maidsafe/safe_browser/archive/0.10.2.tar.gz
-	sha256sums = 7c3f4bf17c4d9bf7fa8334fbea250141d3a52964d08c99d0efccf55152703d9d
+	source = safe-browser-0.11.0.tar.gz::https://github.com/maidsafe/safe_browser/archive/0.11.0.tar.gz
+	sha256sums = 2bffa2472bf3bc4f672a02972de0788cf1e966e99c863080ebcce1776f8ef345
 
 pkgname = safe-browser
 
