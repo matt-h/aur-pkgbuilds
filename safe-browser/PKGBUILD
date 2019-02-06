@@ -1,6 +1,6 @@
 # Maintainer: Bartłomiej Kamiński <bartlomiej.kaminski@maidsafe.net>
 pkgname=safe-browser
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A browser designed to open safe:// websites on the SAFE Network."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ groups=('maidsafe')
 depends=('gtk2' 'gconf' 'alsa-lib' 'libxtst' 'libxss')
 makedepends=('nodejs-lts-carbon' 'yarn' 'unzip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maidsafe/safe_browser/archive/$pkgver.tar.gz")
-sha256sums=('2bffa2472bf3bc4f672a02972de0788cf1e966e99c863080ebcce1776f8ef345')
+sha256sums=('35eca0848f17c061742b767fc34e44dc78e35ff9f21874280d678b9895bdefb0')
 if [ "$CARCH" = "i686" ]; then
   _source_arch="x86"
 else
@@ -20,6 +20,7 @@ fi
 build() {
   cd "$srcdir/safe_browser-$pkgver"
   yarn
+  yarn run put-live-net-files-for-linux
   yarn run package
 }
 
@@ -31,4 +32,5 @@ package() {
   mv "$srcdir/safe_browser-$pkgver/release/safe-browser-v$pkgver-linux-$_source_arch" "$pkgdir/opt/maidsafe/$pkgname-$pkgver"
   mkdir -p "$pkgdir/opt/maidsafe/$pkgname-$pkgver/resources/app/node_modules/locales"
   ln -s "/opt/maidsafe/$pkgname-$pkgver/safe-browser" "$pkgdir/usr/bin/safe-browser"
+  cp "$srcdir/safe_browser-$pkgver/resources/crust.config" "$pkgdir/opt/maidsafe/$pkgname-$pkgver/safe-browser.crust.config"
 }
