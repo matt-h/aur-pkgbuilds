@@ -17,3 +17,9 @@
 
 # mkpkg status files, from soyuz.archlinux.org
 .mkpkg_check
+
+# build log files
+*-namcap.log
+*-build.log
+*-check.log
+*-package.log
