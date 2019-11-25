@@ -1,0 +1,24 @@
+pkgbase = xmrig-amd
+	pkgdesc = High Perf CryptoNote GPU Miner (Monero, Aeon)
+	pkgver = 2.14.6
+	pkgrel = 1
+	url = https://github.com/xmrig/xmrig-amd
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = opencl-headers
+	depends = libuv
+	depends = libmicrohttpd
+	depends = ocl-icd
+	depends = openssl
+	conflicts = xmrig-amd-git
+	backup = etc/xmrig-amd/xmrig.conf
+	source = xmrig-amd.service
+	source = https://github.com/xmrig/xmrig-amd/archive/v2.14.6.tar.gz
+	sha256sums = 6b1914975f93842fd564b7b4b6ee73b93942c154aebfb5f18e3a2d100041832b
+	sha256sums = 7a3a2ac9240672002fd85f06f5127eb6733a865d82ed7031e62c072052634b20
+
+pkgname = xmrig-amd
+
