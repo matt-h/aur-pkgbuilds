@@ -23,3 +23,5 @@
 *-build.log
 *-check.log
 *-package.log
+*x86_64-prepare.log
+*x86_64-package*.log
