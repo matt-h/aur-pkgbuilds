@@ -11,4 +11,3 @@ pkgbase = ruby-svn2git
 	sha256sums = a8dc7430aa4c7c0ac50ad3b81d7b2691baa39ce27dcb060a0a78f1e5790b8e9b
 
 pkgname = ruby-svn2git
-
