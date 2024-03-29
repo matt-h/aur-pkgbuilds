@@ -1,16 +1,26 @@
 pkgbase = furtherance
 	pkgdesc = Track your time without being tracked
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
-	url = https://github.com/lakoliu/furtherance
-	arch = any
-	license = GPL3
-	makedepends = git
+	url = https://github.com/lakoliu/Furtherance
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
 	makedepends = meson
-	makedepends = rust
+	depends = cairo
+	depends = dbus
+	depends = dconf
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4
+	depends = hicolor-icon-theme
 	depends = libadwaita
+	depends = pango
 	depends = sqlite
-	source = git+https://github.com/lakoliu/furtherance#tag=v1.8.1
+	source = furtherance-1.8.3.tar.gz::https://github.com/lakoliu/Furtherance/archive/refs/tags/v1.8.3.tar.gz
 	b2sums = SKIP
 
 pkgname = furtherance
