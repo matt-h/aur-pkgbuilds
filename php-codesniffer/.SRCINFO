@@ -1,21 +1,13 @@
 pkgbase = php-codesniffer
 	pkgdesc = PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards.
-	pkgver = 3.7.2
+	pkgver = 3.9.1
 	pkgrel = 1
-	url = http://pear.php.net/package/PHP_CodeSniffer/
+	url = https://github.com/PHPCSStandards/PHP_CodeSniffer
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	makedepends = git
 	depends = php
-	source = phpcs-3.7.2.phar::https://github.com/squizlabs/PHP_CodeSniffer/releases/download/3.7.2/phpcs.phar
-	source = phpcs-3.7.2.phar.asc::https://github.com/squizlabs/PHP_CodeSniffer/releases/download/3.7.2/phpcs.phar.asc
-	source = phpcbf-3.7.2.phar::https://github.com/squizlabs/PHP_CodeSniffer/releases/download/3.7.2/phpcbf.phar
-	source = phpcbf-3.7.2.phar.asc::https://github.com/squizlabs/PHP_CodeSniffer/releases/download/3.7.2/phpcbf.phar.asc
-	source = licence-3.7.2.txt::https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/3.7.2/licence.txt
-	validpgpkeys = A972B9ABB95D0B760B51442231C7E470E2138192
-	sha256sums = 204214c1ea5ba814fb0b2608c19cca2c10bf5ffcc9f0e3d4c34aadc0179517b7
-	sha256sums = SKIP
-	sha256sums = 4eca732a997df08a4c97e43266eb8122f916d39bb002a000600fdd5393f4efe1
-	sha256sums = SKIP
-	sha256sums = 577aa0eb3360e7b45fe436138c40d49f952e6d496987406981b6f1eee69b26e9
+	source = php-codesniffer-3.9.1::git+https://github.com/PHPCSStandards/PHP_CodeSniffer#commit=267a4405fff1d9c847134db3a3c92f1ab7f77909
+	b2sums = SKIP
 
 pkgname = php-codesniffer
