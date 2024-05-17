@@ -1,18 +1,19 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# Maintainer: Krister Bäckman <ixevix@gmail.com>
 pkgname=slack-cli
-pkgver=0.18.0
-pkgrel=4
+pkgver=2.24.0
+pkgrel=0
 pkgdesc="Powerful Slack CLI via pure bash. Rich messaging, uploads, posts, piping, oh my!"
 arch=('any')
-url="https://github.com/rockymadden/slack-cli"
+url="https://api.slack.com/automation/quickstart"
 license=('MIT')
 depends=('bash')
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/rockymadden/slack-cli/archive/v$pkgver.tar.gz"
+	"https://downloads.slack-edge.com/slack-cli/slack_cli_""$pkgver""_linux_64-bit.tar.gz"
 	)
 
 package() {
-	install -Dm755 "$srcdir/$pkgname-$pkgver/src/slack" "$pkgdir/usr/bin/slack-cli"
+	install -Dm755 "$srcdir/bin/slack" "$pkgdir/usr/bin/slack-cli"
 }
 
-md5sums=('d7df2879cce8dcd5bbe20aec60f466a4')
+md5sums=('98fcdb01a38bea57f73392cb2c8c4ce7')
