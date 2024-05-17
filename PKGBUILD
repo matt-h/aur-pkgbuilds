@@ -1,5 +1,5 @@
-# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 # Maintainer: Krister Bäckman <ixevix@gmail.com>
+# Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=slack-cli
 pkgver=2.24.0
 pkgrel=0
