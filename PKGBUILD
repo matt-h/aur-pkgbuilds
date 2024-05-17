@@ -7,7 +7,7 @@ pkgdesc="Powerful Slack CLI via pure bash. Rich messaging, uploads, posts, pipin
 arch=('any')
 url="https://api.slack.com/automation/quickstart"
 license=('MIT')
-depends=('git')
+depends=('git' 'deno')
 source=(
 	"https://downloads.slack-edge.com/slack-cli/slack_cli_""$pkgver""_linux_64-bit.tar.gz"
 	)
