@@ -1,7 +1,7 @@
 # Maintainer: Krister Bäckman <ixevix@gmail.com>
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=slack-cli
-pkgver=2.28.0
+pkgver=2.29.1
 pkgrel=0
 pkgdesc="Powerful Slack CLI via pure bash. Rich messaging, uploads, posts, piping, oh my!"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
 	install -Dm755 "$srcdir/bin/slack" "$pkgdir/usr/bin/slack-cli"
 }
 
-md5sums=('50f63646daf7a547f2f9f5d204bff867')
+md5sums=('23335d773346b9b94b8e940446afa3b5')

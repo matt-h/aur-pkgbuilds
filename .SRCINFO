@@ -1,13 +1,13 @@
 pkgbase = slack-cli
 	pkgdesc = Powerful Slack CLI via pure bash. Rich messaging, uploads, posts, piping, oh my!
-	pkgver = 2.28.0
+	pkgver = 2.29.1
 	pkgrel = 0
 	url = https://api.slack.com/automation/quickstart
 	arch = any
 	license = MIT
 	depends = git
 	depends = deno
-	source = https://downloads.slack-edge.com/slack-cli/slack_cli_2.28.0_linux_64-bit.tar.gz
-	md5sums = 50f63646daf7a547f2f9f5d204bff867
+	source = https://downloads.slack-edge.com/slack-cli/slack_cli_2.29.1_linux_64-bit.tar.gz
+	md5sums = 23335d773346b9b94b8e940446afa3b5
 
 pkgname = slack-cli
