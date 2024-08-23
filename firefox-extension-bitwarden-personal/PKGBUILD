@@ -1,0 +1,61 @@
+# Maintainer: Matt Harrison <matt@harrison.us.com>
+# Contributor: David Hummel <hummeltech@sherpaguru.com>
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
+
+pkgname=firefox-extension-bitwarden-personal
+pkgver=2024.8.0
+pkgrel=1
+pkgdesc='Bitwarden browser extension for Firefox - Matt Edition'
+arch=('any')
+url='https://github.com/bitwarden/clients'
+license=('GPL-3.0-or-later')
+optdepends=('firefox')
+groups=('firefox-addons')
+pkgdesc='Bitwarden browser extension for Firefox'
+makedepends=('nodejs' 'npm' 'unzip' 'imagemagick' 'perl' 'ttf-droid')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
+sha256sums=('920173232d67b883ee98369856ca162d18bd817c031d7709b8459c4d22f1dd08')
+
+prepare() {
+  cd "${srcdir}/clients-browser-v${pkgver}" || exit
+  npm ci
+}
+
+build() {
+  cd "${srcdir}/clients-browser-v${pkgver}/apps/browser" || exit
+  find . -type f -exec perl -pi -e 's/"Bitwarden"/"Bitwarden - Matt"/go;' {} \;
+  find . -type f -exec perl -pi -e 's/"Bitwarden - Free Password Manager"/"Bitwarden - Matt"/go;' {} \;
+  find . -type f -exec perl -pi -e 's/"Bitwarden Password Manager"/"Bitwarden - Matt"/go;' {} \;
+  find . -type f -exec perl -pi -e 's/446900e4-71c2-419f-a6a7-df9c091e268b/37c30bda-db14-4b06-aeb1-a1998de1a766/go;' {} \;
+  find . -type f -exec perl -pi -e 's{<title>Bitwarden</title>}{<title>Bitwarden - Matt</title>}go;' {} \;
+  mkdir -p newimages
+  for file in src/images/*; do
+    case $file in
+      *128)
+        pointsize="-pointsize 24"
+        ;;
+      *32*|*38*|*48*)
+        pointsize="-pointsize 18"
+        ;;
+      *16*|*18*|*19*)
+        pointsize="-pointsize 10"
+        ;;
+      *)
+        pointsize=""
+        ;;
+    esac
+
+    composite $pointsize label:"MH" -gravity NorthWest $file newimages/`basename $file`
+  done
+  cp newimages/* src/images/
+  npm run dist:firefox
+}
+
+check() {
+  cd "${srcdir}/clients-browser-v${pkgver}/apps/browser" || exit
+  npm run test
+}
+
+package() {
+  install -Dm644 "${srcdir}/clients-browser-v${pkgver}/apps/browser/dist/dist-firefox.zip" "${pkgdir}/usr/lib/firefox/browser/extensions/{37c30bda-db14-4b06-aeb1-a1998de1a766}.xpi"
+}
