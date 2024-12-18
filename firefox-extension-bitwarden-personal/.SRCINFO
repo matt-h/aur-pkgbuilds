@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-bitwarden-personal
 	pkgdesc = Bitwarden browser extension for Firefox
-	pkgver = 2024.11.2
+	pkgver = 2024.12.1
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = firefox-extension-bitwarden-personal
 	makedepends = imagemagick
 	makedepends = perl
 	makedepends = ttf-droid
+	makedepends = zip
 	optdepends = firefox
-	source = firefox-extension-bitwarden-personal-2024.11.2.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v2024.11.2.tar.gz
-	sha256sums = 406a9cc31414d64b90954d7a6217703c013a53261568e8a101891d69494d8ce5
+	source = firefox-extension-bitwarden-personal-2024.12.1.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v2024.12.1.tar.gz
+	b2sums = 3cc52678849e26bbb6282ff35290cc431a9dc258b115964ef84bf45b2811c03e0e62124977bc8c672ca9223b363cbf6a6b77ecb074ef54afaabd53345297e732
 
 pkgname = firefox-extension-bitwarden-personal
