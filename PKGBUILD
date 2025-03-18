@@ -1,7 +1,7 @@
 # Maintainer: Krister Bäckman <ixevix@gmail.com>
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=slack-cli
-pkgver=2.31.0
+pkgver=3.0.0
 pkgrel=0
 pkgdesc="The Slack CLI is a set of tools critical to building workflow apps for Slack. Requires Deno."
 arch=('any')
@@ -16,4 +16,4 @@ package() {
 	install -Dm755 "$srcdir/bin/slack" "$pkgdir/usr/bin/slack-cli"
 }
 
-md5sums=('2e4d0bfff00e73b55495d400def0a76f')
+md5sums=('107c5206394af9a94c1e7f66cfa3602b')
