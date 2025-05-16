@@ -3,7 +3,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=firefox-extension-bitwarden-personal
-pkgver=2025.4.0
+pkgver=2025.5.0
 pkgrel=1
 pkgdesc='Bitwarden browser extension for Firefox - Matt Edition'
 arch=('any')
@@ -14,12 +14,10 @@ groups=('firefox-addons')
 pkgdesc='Bitwarden browser extension for Firefox'
 makedepends=('nodejs' 'npm' 'unzip' 'imagemagick' 'perl' 'ttf-droid' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
-b2sums=('f3ef035dbf01f7037f7da4d9744823be1c1f0488c9e81ee5bc66b89856b9a5a9d07732dff2ca9d04cd57d4fce88ba4f67edc1aac7ba084503dc874009a5fd2bd')
+b2sums=('0de37c8474cf94b647e9534560ee96adf7e6678bc867c3594b550d30398eea22f07beb1a22b8044f4b79ca0184b32738e5e9317b6d80874cfadda63f34a79906')
 
 prepare() {
   cd "${srcdir}/clients-browser-v${pkgver}" || exit
-  # Starting in 2024.12.0 it uses powershell to create the zip. Rather than requiring powershell to build this, we just create the zip in the build step.
-  sed -i 's| \&\& \.\/scripts\/compress\.ps1 dist-firefox\.zip||' apps/browser/package.json
   npm ci
 }
 
@@ -31,21 +29,22 @@ build() {
   find . -type f -exec perl -pi -e 's/446900e4-71c2-419f-a6a7-df9c091e268b/37c30bda-db14-4b06-aeb1-a1998de1a766/go;' {} \;
   find . -type f -exec perl -pi -e 's{<title>Bitwarden</title>}{<title>Bitwarden - Matt</title>}go;' {} \;
   for file in src/images/*; do
-    # if file is svg, skip it
-    if [[ $file == *.svg ]]; then
-        continue
+    # if file is not png, skip it
+    if [[ $file != *.png ]]; then
+      echo "Skipping non-png file: $file"
+      continue
     fi
     # if file doesn't start with icon, skip
-    if [[ $file != icon-* ]]; then
-        continue
+    if [[ $(basename "$file") != icon* ]]; then
+      echo "Skipping non-icon file: $file"
+      continue
     fi
 
     # change color of the icon to green
+    echo "Updating icon color: $file"
     magick "$file" -modulate 100,70,60 "$file"
   done
   npm run dist:firefox
-  cd build
-  zip -r ../dist/dist-firefox.zip .
 }
 
 check() {
