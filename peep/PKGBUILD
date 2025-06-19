@@ -14,7 +14,7 @@ sha256sums=('780b2d99d8a0920a0669e0aaca98ef8111e13b54ec99f38b683ba6fc82e9bc58')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 
