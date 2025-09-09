@@ -8,7 +8,7 @@ pkgdesc="Forward notifications from Apple devices to your desktop."
 url="https://github.com/impiaaa/ios-notif-forward"
 arch=('x86_64')
 license=('MIT')
-depends=('gtk3' 'xdotool' 'libappindicator-gtk3')
+depends=('gtk3' 'xdotool' 'libappindicator-gtk3' 'glibc' 'cairo' 'gcc-libs' 'glib2' 'gdk-pixbuf2' 'dbus' 'pango')
 makedepends=('cargo')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/impiaaa/ios-notif-forward/archive/refs/tags/v${pkgver}.tar.gz"
