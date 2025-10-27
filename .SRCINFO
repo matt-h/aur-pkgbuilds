@@ -1,13 +1,13 @@
 pkgbase = slack-cli
 	pkgdesc = The Slack CLI is a set of tools critical to building workflow apps for Slack. Requires Deno.
-	pkgver = 3.0.0
+	pkgver = 3.9.0
 	pkgrel = 0
 	url = https://api.slack.com/automation/quickstart
 	arch = any
 	license = MIT
 	depends = git
 	depends = deno
-	source = https://downloads.slack-edge.com/slack-cli/slack_cli_3.0.0_linux_64-bit.tar.gz
-	md5sums = 107c5206394af9a94c1e7f66cfa3602b
+	source = https://downloads.slack-edge.com/slack-cli/slack_cli_3.9.0_linux_64-bit.tar.gz
+	md5sums = eda4afbbf2a3fa022b4e6f1008b72eb7
 
 pkgname = slack-cli
