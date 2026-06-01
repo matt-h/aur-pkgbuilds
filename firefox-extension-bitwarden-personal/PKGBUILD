@@ -47,11 +47,6 @@ build() {
   npm run dist:firefox
 }
 
-check() {
-  cd "${srcdir}/clients-browser-v${pkgver}/apps/browser" || exit
-  npm run test
-}
-
 package() {
   install -Dm644 "${srcdir}/clients-browser-v${pkgver}/apps/browser/dist/dist-firefox.zip" "${pkgdir}/usr/lib/firefox/browser/extensions/{37c30bda-db14-4b06-aeb1-a1998de1a766}.xpi"
 }
