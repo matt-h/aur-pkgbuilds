@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=whim
-pkgver=0.14.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Whim Programming Language. Whim is a toy programming language. Do not use it in production."
 url="https://whim.sh/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/carthage-software/whim/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('6e92689e1c69d4c72d3618e787adfd06c4106bfa467de8664fcce57cacbb99eda6dcb0c0191d38af2b52036d58a178bc1240ccb584d5d42d8d88fd8365902fa4')
+b2sums=('523077f7ca4b80c8b8d4a44394aedaae12056cda73fdee48d5dc88718754296c1085c7c62d148dec8c4d8ff6c349e8a068c9ea46a428e13d9398092bc22fc6bf')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
