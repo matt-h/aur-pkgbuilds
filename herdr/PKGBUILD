@@ -1,23 +1,25 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Matt Harrison <matt@harrison.us.com>
+
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
+
 pkgname=herdr
-pkgver=0.9.3
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='Terminal workspace manager for AI coding agents'
 arch=('x86_64' 'aarch64')
 url='https://herdr.dev'
-license=('AGPL-3.0-or-later')
+license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'git' 'zig=0.16.0')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogulcancelik/herdr/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e48f6706440c92362773663131ef5b524c62549523e50a03f2b55d315edca100')
-_zig=/usr/bin/zig
+makedepends=('cargo' 'git' 'zig0.16')
+_zig=zig-0.16
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/herdrdev/herdr/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a2486b09a8153630f6a19e72606ba1c961a6194bce13c09cba67ccce5e4252de')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-cache"
-  export PATH="${_zig%/*}:${PATH}"
 
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 
@@ -39,7 +41,6 @@ build() {
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-cache"
-  export PATH="${_zig%/*}:${PATH}"
   export ZIG="${_zig}"
   export HERDR_BUILD_CHANNEL=stable
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
